@@ -1,0 +1,32 @@
+Designs <- list(
+			Observations=list (
+				"//Observation",
+				 list(
+					OID =		"id",
+						LoincCode = 	"code/coding/code",
+						Bezeichnung = 	"code/coding/display", 
+					PID = 		"subject/reference", 
+					EID = 		"encounter/reference", 
+					Value = 		"valueQuantity/value", 
+					Unit = 		"valueQuantity/unit"
+					)
+				), 
+			Patients = list (
+				"//Patient", 
+				list(
+					PID = 		"id", 
+					Familienname = 	"name/family", 
+					Vorname = 	"name/given", 
+					Gender = 		"gender",
+					Birthdate = 	"birthDate"
+					)
+				), 
+			Encounters = list (
+				"//Encounter",
+				list(
+					EID = 		"id", 
+					PID = 		"subject/reference", 
+					CID =	 "diagnosis/condition/reference"
+					)
+				)
+			)

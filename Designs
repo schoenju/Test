@@ -1,3 +1,4 @@
+# fhircrackr designs for observation, patient, and encounter fhir resources
 Designs <- list(
 	Observations=list (
 		"//Observation",

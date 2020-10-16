@@ -1,0 +1,19 @@
+#‘AddAgegroupCol
+#‘
+#‘@description
+#‘Adds an Agegroup-Column to the specified table:
+#‘Agegroups are structured like:	0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69, 70-79, >80
+#‘
+#‘@details
+#‘assumptions: Input table contains an birthdate-column
+#‘
+#‘@param table	table, where the column should be added to
+#‘@param col	  Columnname where the Bithdate is stored in format: table$col
+AddAgegroupCol <- function(table, col){
+    	Date <- Sys.Date()
+    	table <- mutate(table, col = as.Date(col))
+    	table <- mutate(table, Age1 = as.numeric(Date-col))
+    	table <- mutate(table, Age1 = as.numeric((Age1)/365.25))
+    	table <- mutate(table, Agegroup = ifelse(Age1<10, "0-9",ifelse(Age1>=10 & Age1<20, "10-19",ifelse(Age1>=20 & Age1<30,"20-29",ifelse(Age1>=30 & Age1<40, "30-39",ifelse(Age1>=40 & Age1<50,"40-49",ifelse(Age1>=50 & Age1<60, "50-59",ifelse(Age1>=60 & Age1<70,"60-69",ifelse(Age1>=70 & Age1<80, "70-79",">80")))))))))
+		  table <- select(table, -c(col, Age1))
+		  }

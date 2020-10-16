@@ -8,7 +8,7 @@
 #‘assumptions: Input table contains an birthdate-column
 #‘
 #‘@param table	table, where the column should be added to
-#‘@param col	  Columnname where the Bithdate is stored in format: table$col
+#‘@param col	Columnname where the Bithdate is stored in format: table$col
 AddAgegroupCol <- function(table, col){
     	Date <- Sys.Date()
     	table <- mutate(table, col = as.Date(col))

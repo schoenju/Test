@@ -7,7 +7,7 @@
 #'assumptions: Input-Table contains a birthdate-column
 #'
 #'@param table	Table the column should be added to
-#'@param col	  Columnname where the Bithdate is stored in format: table$col
+#'@param col	Columnname where the Bithdate is stored in format: table$col
 AddAgeCol <- function(table, col){
 		Date <- Sys.Date()
 		table <- mutate(table, col = as.Date(col))

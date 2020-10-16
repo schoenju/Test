@@ -1,1 +1,13 @@
-# Hello world
+#'LoadData                                                      
+#'
+#'@description
+#'Loads FhirRessources as stated in the search_request and 
+#'returns the converted ressources
+#'
+#'@details
+#'@param Search_Request input Search_Request
+#'@param Design		design designed for the Ressources specified by the Search_Request
+LoadData <- function(Search_Request, Design) {                      
+    	Bundles <- fhir_search(Search_Request, verbose = 0)
+	List_Of_Tables <- fhir_crack(Bundles, Design, verbose = 0) 
+	}

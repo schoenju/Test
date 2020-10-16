@@ -11,11 +11,11 @@
 #‘@param col2	Column in which perspective the sd of values from col1 should be calculated
 #‘@param aggr	Aggregatfunction which should be computed
 CalculateAggr <- function(table, col1, col2, aggr){
-		SubstituteTable <- select(table, col1, col2)
-		SubstituteTable <- mutate(SubstituteTable, col1 = as.numeric(col1))
+	SubstituteTable <- select(table, col1, col2)
+	SubstituteTable <- mutate(SubstituteTable, col1 = as.numeric(col1))
 	SubstituteTable <- aggregate(SubstituteTable, list(SubstituteCol2 = SubstituteTable$col2), aggr)
 	SubstituteTable <- select(SubstituteTable, SubstituteCol2, Col1)
-		SubstituteTable <- rename(SubstituteTable, c("col2" = "SubstituteCol2"))
-		table <- table  %>% inner_join(SubstituteTable, by = "col2")
-		rm(SubstituteTable)
-		}
+	SubstituteTable <- rename(SubstituteTable, c("col2" = "SubstituteCol2"))
+	table <- table  %>% inner_join(SubstituteTable, by = "col2")
+	rm(SubstituteTable)
+	}
